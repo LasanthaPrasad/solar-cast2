@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Plant Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        h1 { color: #333; }
+        .plant { margin-bottom: 40px; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <h1>Solar Plant Data</h1>
+    {% for site_id, site_data in data.items() %}
+        <div class="plant">
+            <h2>{{ site_id }}</h2>
+            <p>Estimated output: {{ site_data.output }} kWh</p>
+            <img src="data:image/png;base64,{{ site_data.plot }}" alt="Forecast for {{ site_id }}">
+        </div>
+    {% endfor %}
+</body>
+</html>
