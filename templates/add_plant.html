@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Solar Plant</title>
+    <style>
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Solar Plant</h1>
+    <form method="POST">
+        <label for="name">Plant Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="size">Plant Size (KW):</label>
+        <input type="number" id="size" name="size" step="0.01" required>
+
+        <label for="latitude">Latitude:</label>
+        <input type="number" id="latitude" name="latitude" step="0.000001" required>
+
+        <label for="longitude">Longitude:</label>
+        <input type="number" id="longitude" name="longitude" step="0.000001" required>
+
+        <label for="angle">Plant Angle:</label>
+        <input type="number" id="angle" name="angle" step="0.1" required>
+
+        <label for="max_power">Maximum Power:</label>
+        <input type="number" id="max_power" name="max_power" step="0.01" required>
+
+        <label for="owner_name">Owner Name:</label>
+        <input type="text" id="owner_name" name="owner_name" required>
+
+        <label for="owner_account">Owner Account Number:</label>
+        <input type="text" id="owner_account" name="owner_account" required>
+
+        <label for="grid_substation">Connected Grid Substation:</label>
+        <input type="text" id="grid_substation" name="grid_substation" required>
+
+        <label for="connected_feeder">Connected Feeder:</label>
+        <input type="text" id="connected_feeder" name="connected_feeder" required>
+
+        <input type="submit" value="Add Plant">
+    </form>
+    <a href="{{ url_for('index') }}">Back to Plant List</a>
+</body>
+</html>

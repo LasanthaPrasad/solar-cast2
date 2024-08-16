@@ -3,22 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar Plant Data</title>
+    <title>Solar Plants</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
-        h1 { color: #333; }
-        .plant { margin-bottom: 40px; }
-        img { max-width: 100%; height: auto; }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
-    <h1>Solar Plant Data</h1>
-    {% for site_id, site_data in data.items() %}
-        <div class="plant">
-            <h2>{{ site_id }}</h2>
-            <p>Estimated output: {{ site_data.output }} kWh</p>
-            <img src="data:image/png;base64,{{ site_data.plot }}" alt="Forecast for {{ site_id }}">
-        </div>
-    {% endfor %}
+    <h1>Solar Plants</h1>
+    <a href="{{ url_for('add_plant') }}">Add New Plant</a>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Size (KW)</th>
+            <th>Location</th>
+            <th>Angle</th>
+            <th>Max Power</th>
+            <th>Owner</th>
+            <th>Account</th>
+            <th>Substation</th>
+            <th>Feeder</th>
+        </tr>
+        {% for plant in plants %}
+        <tr>
+            <td>{{ plant.name }}</td>
+            <td>{{ plant.size }}</td>
+            <td>{{ plant.latitude }}, {{ plant.longitude }}</td>
+            <td>{{ plant.angle }}</td>
+            <td>{{ plant.max_power }}</td>
+            <td>{{ plant.owner_name }}</td>
+            <td>{{ plant.owner_account }}</td>
+            <td>{{ plant.grid_substation }}</td>
+            <td>{{ plant.connected_feeder }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
